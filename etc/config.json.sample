@@ -1,0 +1,8 @@
+{
+    "appPort": 8080,
+    "publicPath": "./public",
+
+    "database": {
+        "path": "mongodb://localhost:27017/Testings"
+    }
+}
