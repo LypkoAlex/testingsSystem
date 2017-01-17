@@ -36,8 +36,13 @@ app.use(bodyParser.json({limit: 1024 * 1024, verify: (req, res, buf) => {
 // API
 app.use('/api/v1', router);
 
+// TEST
 router.getAsync(   '/projects',     routes.projects.list.bind(routes.projects));
-router.postAsync('/testing', routes.testings.create.bind(routes.testings));
+
+// testings
+router.postAsync('/sessions', routes.sessions.create.bind(routes.sessions));
+// Questions
+router.getAsync( '/questions/:id', routes.questions.show.bind(routes.questions));
 
 if (!process.env.ENV !== 'test') {
     app.listen(appPort);
