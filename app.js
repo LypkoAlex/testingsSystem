@@ -37,12 +37,22 @@ app.use(bodyParser.json({limit: 1024 * 1024, verify: (req, res, buf) => {
 app.use('/api/v1', router);
 
 // TEST
-router.getAsync(   '/projects',     routes.projects.list.bind(routes.projects));
+// router.getAsync(   '/projects',     routes.projects.list.bind(routes.projects));
 
 // testings
-router.postAsync('/sessions', routes.sessions.create.bind(routes.sessions));
+// router.postAsync('/sessions', routes.sessions.create.bind(routes.sessions));
+// Subject
+// router.getAsync( '/subjects',     routes.subjects.list.bind(routes.subjects));
+// router.getAsync( '/subjects/:id', routes.subjects.show.bind(routes.subjects));
+// Speciality
+router.getAsync(    '/specialities',     routes.specialities.list.bind(routes.specialities));
+router.getAsync(    '/specialities/:id', routes.specialities.show.bind(routes.specialities));
+router.postAsync(   '/specialities',     routes.specialities.create.bind(routes.specialities));
+router.deleteAsync( '/specialities/:id', routes.specialities.delete.bind(routes.specialities));
+router.patchAsync(  '/specialities/:id', routes.specialities.update.bind(routes.specialities));
+
 // Questions
-router.getAsync( '/questions/:id', routes.questions.show.bind(routes.questions));
+// router.getAsync( '/questions/:id', routes.questions.show.bind(routes.questions));
 
 if (!process.env.ENV !== 'test') {
     app.listen(appPort);
