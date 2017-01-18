@@ -42,8 +42,12 @@ app.use('/api/v1', router);
 // testings
 // router.postAsync('/sessions', routes.sessions.create.bind(routes.sessions));
 // Subject
-// router.getAsync( '/subjects',     routes.subjects.list.bind(routes.subjects));
-// router.getAsync( '/subjects/:id', routes.subjects.show.bind(routes.subjects));
+router.getAsync(    '/specialities/:specialityId/subjects', routes.subjects.list.bind(routes.subjects));
+router.postAsync(   '/specialities/:specialityId/subjects', routes.subjects.create.bind(routes.subjects));
+
+router.getAsync(    '/subjects/:id', routes.subjects.show.bind(routes.subjects));
+router.deleteAsync( '/subjects/:id', routes.subjects.delete.bind(routes.subjects));
+router.patchAsync(  '/subjects/:id', routes.subjects.update.bind(routes.subjects));
 // Speciality
 router.getAsync(    '/specialities',     routes.specialities.list.bind(routes.specialities));
 router.getAsync(    '/specialities/:id', routes.specialities.show.bind(routes.specialities));
