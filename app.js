@@ -39,11 +39,18 @@ app.use('/api/v1', router);
 // TEST
 // router.getAsync(   '/projects',     routes.projects.list.bind(routes.projects));
 
-// testings
-// router.postAsync('/sessions', routes.sessions.create.bind(routes.sessions));
+// Questions
+router.getAsync(    '/questions/',    routes.questions.listAll.bind(routes.questions));
+router.getAsync(    '/questions/:id', routes.questions.show.bind(routes.questions));
+router.deleteAsync( '/questions/:id', routes.questions.delete.bind(routes.questions));
+router.patchAsync(  '/questions/:id', routes.questions.update.bind(routes.questions));
+router.postAsync(   '/subjects/:subjectId/questions', routes.questions.create.bind(routes.questions));
+router.getAsync(    '/subjects/:subjectId/questions', routes.questions.list.bind(routes.questions));
+
 // Subject
-// router.getAsync( '/subjects',     routes.subjects.list.bind(routes.subjects));
-// router.getAsync( '/subjects/:id', routes.subjects.show.bind(routes.subjects));
+router.getAsync(    '/specialities/:specialityId/subjects', routes.subjects.list.bind(routes.subjects));
+router.postAsync(   '/specialities/:specialityId/subjects', routes.subjects.create.bind(routes.subjects));
+
 // Speciality
 router.getAsync(    '/specialities',     routes.specialities.list.bind(routes.specialities));
 router.getAsync(    '/specialities/:id', routes.specialities.show.bind(routes.specialities));
@@ -51,8 +58,14 @@ router.postAsync(   '/specialities',     routes.specialities.create.bind(routes.
 router.deleteAsync( '/specialities/:id', routes.specialities.delete.bind(routes.specialities));
 router.patchAsync(  '/specialities/:id', routes.specialities.update.bind(routes.specialities));
 
-// Questions
-// router.getAsync( '/questions/:id', routes.questions.show.bind(routes.questions));
+// Exam
+router.getAsync(  '/specialities/:specialityId/exams', routes.exams.list.bind(routes.exams));
+router.postAsync( '/specialities/:specialityId/exams', routes.exams.create.bind(routes.exams));
+
+router.patchAsync(  '/exams/:id', routes.exams.update.bind(routes.exams));
+router.getAsync(    '/exams/:id', routes.exams.show.bind(routes.exams));
+router.deleteAsync( '/exams/:id', routes.exams.delete.bind(routes.exams));
+router.getAsync(    '/exams/',    routes.exams.listAll.bind(routes.exams));
 
 if (!process.env.ENV !== 'test') {
     app.listen(appPort);
