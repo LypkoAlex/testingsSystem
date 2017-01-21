@@ -68,6 +68,9 @@ router.deleteAsync( '/exams/:id',                        routes.exams.delete.bin
 router.getAsync(    '/specialities/:specialityId/exams', routes.exams.list.bind(routes.exams));
 router.postAsync(   '/specialities/:specialityId/exams', routes.exams.create.bind(routes.exams));
 
+// Mail
+router.postAsync( '/feedback/', routes.feedback.create.bind(routes.feedback));
+
 if (!process.env.ENV !== 'test') {
     app.listen(appPort);
 }
