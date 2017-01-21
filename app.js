@@ -71,6 +71,10 @@ router.postAsync(   '/specialities/:specialityId/exams', routes.exams.create.bin
 // Mail
 router.postAsync( '/feedback/', routes.feedback.create.bind(routes.feedback));
 
+// Sessions
+// router.postAsync( '/exams/:examId/test', routes.test.create.bind(routes.test));
+
+
 if (!process.env.ENV !== 'test') {
     app.listen(appPort);
 }
