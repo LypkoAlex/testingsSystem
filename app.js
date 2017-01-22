@@ -72,8 +72,9 @@ router.postAsync(   '/specialities/:specialityId/exams', routes.exams.create.bin
 router.postAsync( '/feedback/', routes.feedback.create.bind(routes.feedback));
 
 // Sessions
-// router.postAsync( '/exams/:examId/test', routes.test.create.bind(routes.test));
-
+router.postAsync( '/exams/:examId/test',         routes.tests.create.bind(routes.tests));
+router.getAsync(  '/tests/:testId/nextQuestion', routes.tests.nextQuestion.bind(routes.tests));
+router.postAsync( '/tests/:testId/checkAnswer',  routes.tests.checkAnswer.bind(routes.tests));
 
 if (!process.env.ENV !== 'test') {
     app.listen(appPort);
