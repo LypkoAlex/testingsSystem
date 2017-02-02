@@ -18,7 +18,7 @@ router.use(multipart());
 
 app.use(bodyParser.urlencoded());
 app.use(cors({ origin: '*' }));
-
+app.use(express.static('public'));
 app.use(bodyParser.json({limit: 1024 * 1024, verify: (req, res, buf) => {
     try {
         JSON.parse(buf);
