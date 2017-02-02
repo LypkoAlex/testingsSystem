@@ -1,6 +1,6 @@
 import express    from 'express';
 import cors       from 'cors';
-import path       from 'path';
+// import path       from 'path';
 import bodyParser from 'body-parser';
 import multipart  from 'connect-multiparty';
 
@@ -18,8 +18,6 @@ router.use(multipart());
 
 app.use(bodyParser.urlencoded());
 app.use(cors({ origin: '*' }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/*', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json({limit: 1024 * 1024, verify: (req, res, buf) => {
     try {
         JSON.parse(buf);
